@@ -7,6 +7,7 @@ Project: **TASK 3 (SECURE CODING REVIEW)** (Juice Shop style)
 > Do **NOT** deploy to production or expose to the public internet.
 
 ---
+  
 
 ## 1. How to Run the Application
 
