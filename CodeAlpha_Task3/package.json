@@ -1,0 +1,15 @@
+{
+  "name": "VulnerableShopApp",
+  "version": "1.0.0",
+  "description": "Intentionally vulnerable e-commerce demo (Juice Shop style) for security training and internship submission.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7"
+  }
+}
+
+

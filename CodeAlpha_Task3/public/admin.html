@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin Panel - VulnerableShop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="page">
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-blender"></i></span>
+        <span class="logo-text">Vulnerable<span>Shop</span></span>
+      </div>
+      <nav class="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/login.html" class="nav-link" data-nav-login>Login</a>
+        <a href="/search.html" class="nav-link">Search</a>
+        <a href="/profile.html" class="nav-link">Profile</a>
+        <a href="/admin.html" class="nav-link active">Admin</a>
+      </nav>
+      <div class="nav-right">
+        <button class="pill pill-soft" id="user-pill" style="display: none"></button>
+        <button class="cart-pill" id="cart-pill">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section-header">
+        <div>
+          <h2>Admin Configuration Panel</h2>
+          <p class="subtitle">
+            This fake admin dashboard deserializes your JSON‑like input with <code>eval('(' + config + ')')</code>.
+          </p>
+        </div>
+        <span class="pill pill-soft"><i class="fa-solid fa-circle-check"></i> Server status: Online</span>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3><i class="fa-solid fa-sliders"></i> System Config</h3>
+          <p>
+            In a secure system, this would validate and safely parse JSON. Here, your string is passed directly into
+            <code>eval</code>, allowing arbitrary JavaScript execution on the server.
+          </p>
+
+          <form id="admin-form" class="form">
+            <label>
+              JSON-like config
+              <textarea
+                name="config"
+                rows="6"
+                spellcheck="false"
+              >{ "featureFlags": { "freeShipping": true }, "cmd": "dir" }</textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-bomb"></i>
+              Exhibit Insecure Deserialization
+            </button>
+          </form>
+
+          <pre id="admin-result" class="result"></pre>
+
+          <p class="hint">
+            Example payloads:<br />
+            <code>{ "cmd": "dir" }</code> (Windows) or <code>{ "cmd": "ls" }</code> (Linux/macOS)<br />
+            <code>{ "cmd": "node -e \"console.log('RCE from config')\""</code>
+          </p>
+        </article>
+
+        <article class="card">
+          <h3><i class="fa-solid fa-gauge-high"></i> Dashboard</h3>
+          <p class="hero-highlight">Traffic: 1,248 requests / day</p>
+          <p class="hero-meta">Average cart value: $32.40 · Abandoned carts: 27%</p>
+          <ul class="order-list">
+            <li>Top product: Mango Tango (4.9★)</li>
+            <li>Most active user: dixit@shop.com</li>
+            <li>Juice incidents: 0 security fixes deployed</li>
+          </ul>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <p>© 2025 Vulnerable Shop · Educational demo only · Do not deploy to production.</p>
+      </footer>
+    </main>
+
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="cart-close" class="icon-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="btn btn-primary btn-full">
+          <i class="fa-solid fa-credit-card"></i> Fake Checkout
+        </button>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+
+
