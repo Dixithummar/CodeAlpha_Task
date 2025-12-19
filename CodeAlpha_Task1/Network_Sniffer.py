@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
 """
-Simple Packet Sniffer with Clean VS Code Terminal Output
-Shows: Source IP, Destination IP, Protocol, Payload Preview
 
 Requirement:
     pip install scapy
