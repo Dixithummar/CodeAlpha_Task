@@ -3,8 +3,6 @@
 Author: **Dixit Thummar – Cyber Security Intern (CodeAlpha)**  
 Project: **TASK 3 (SECURE CODING REVIEW)** (Juice Shop style)
 
-> **Warning:** This application is purposely vulnerable and for training only.  
-> Do **NOT** deploy to production or expose to the public internet.
 
 ---
   
