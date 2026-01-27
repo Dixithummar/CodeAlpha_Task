@@ -1,0 +1,61 @@
+// Prisma schema for WA Bulk Sender Backend
+// SQLite database for backup and sync
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id           String   @id @default(uuid())
+  userId       String   // For multi-user support
+  name         String
+  phone        String
+  customFields String?  // JSON string
+  sent         Boolean  @default(false)
+  sentAt       DateTime?
+  error        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([phone])
+}
+
+model Template {
+  id        String   @id @default(uuid())
+  userId    String   // For multi-user support
+  name      String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Log {
+  id          String   @id @default(uuid())
+  userId      String   // For multi-user support
+  contactId   String
+  contactName String
+  phone       String
+  message     String
+  status      String   // 'success' or 'error'
+  error       String?
+  timestamp   DateTime @default(now())
+
+  @@index([userId])
+  @@index([status])
+}
+
+model User {
+  id        String   @id @default(uuid())
+  deviceId  String   @unique
+  settings  String?  // JSON string
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
